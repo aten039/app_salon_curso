@@ -1,0 +1,6 @@
+
+/src
+/node_modules
+**/.Ds_stores
+package-lock.json
+gulpfile.js

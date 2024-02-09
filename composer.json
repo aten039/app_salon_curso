@@ -1,0 +1,20 @@
+{
+    "name": "elvis/app_salon",
+    "description": "salon de belleza",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Elvis\\AppSalon\\": "src/",
+            "Models\\":"./Models",
+            "Controllers\\":"./Controllers",
+            "Router\\":"./"
+        }
+    },
+    "authors": [
+        {
+            "name": "aten039",
+            "email": "l.elvis039@gmail.com"
+        }
+    ],
+    "require": {}
+}
