@@ -7,7 +7,7 @@
             "Elvis\\AppSalon\\": "src/",
             "Models\\":"./Models",
             "Controllers\\":"./Controllers",
-            "Router\\":"./"
+            "MVC\\":"./"
         }
     },
     "authors": [

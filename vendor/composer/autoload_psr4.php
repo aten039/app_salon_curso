@@ -6,8 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Router\\' => array($baseDir . '/'),
     'Models\\' => array($baseDir . '/Models'),
+    'MVC\\' => array($baseDir . '/'),
     'Elvis\\AppSalon\\' => array($baseDir . '/src'),
     'Controllers\\' => array($baseDir . '/Controllers'),
 );
