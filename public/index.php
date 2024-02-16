@@ -11,6 +11,11 @@ $router = new Router();
 $router->get('/crear_cuenta', [LoginControllers::class, 'crear_cuenta']);
 $router->post('/crear_cuenta', [LoginControllers::class, 'crear_cuenta']);
 
+//confirmar
+
+$router->get('/confirmar-cuenta', [LoginControllers::class, 'confirmar']);
+$router->get('/mensaje', [LoginControllers::class, 'mensaje']);
+
 //iniciar sesion
 
 $router->get('/', [LoginControllers::class, 'login']);

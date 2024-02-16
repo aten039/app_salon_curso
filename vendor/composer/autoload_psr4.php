@@ -6,8 +6,10 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Models\\' => array($baseDir . '/Models'),
     'MVC\\' => array($baseDir . '/'),
     'Elvis\\AppSalon\\' => array($baseDir . '/src'),
     'Controllers\\' => array($baseDir . '/Controllers'),
+    'Clases\\' => array($baseDir . '/Clases'),
 );
