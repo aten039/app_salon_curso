@@ -37,7 +37,7 @@ class Email {
         //quien lo envia
         $phpmailer->setFrom('cuentas@appsalon.com');
         //quien recibe
-        $phpmailer->addAddress('l.elvis039@gmail.com', 'Elvis');
+        $phpmailer->addAddress('cuentas@appsalon.com', 'appsalon.com');
         //asunto del correo
         $phpmailer->Subject = 'Confirma tu cuenta';
         //habilitar el html y el charset

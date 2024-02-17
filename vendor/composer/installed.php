@@ -3,7 +3,7 @@
         'name' => 'elvis/app_salon',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'a462f2836b5b487bacdb8b102d938ee15afaa1a5',
+        'reference' => '85bde50d6762e638871aa235fb0e0f25d22bf861',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'elvis/app_salon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'a462f2836b5b487bacdb8b102d938ee15afaa1a5',
+            'reference' => '85bde50d6762e638871aa235fb0e0f25d22bf861',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

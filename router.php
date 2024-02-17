@@ -34,7 +34,8 @@ class Router{
         }
 
         if($fn){
-            call_user_func( $fn, $this);
+            $fn = call_user_func( $fn, $this);
+            
         }else{
             echo '<h1> ERROR 404</h1>';
             echo '</p>La URL introducida es invalidad, por favor intente nuevamente</p>';

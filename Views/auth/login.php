@@ -2,11 +2,13 @@
 <h1 class="nombre-pagina">Login</h1>
 <p class="descripcion-pagina">Inicia Sesion</p>
 
+<?php include_once __DIR__ . '/../templates/alertas.php'; ?>
+
 <form class="formulario" method="POST" action="/">
 
     <div class="campo">
         <label class="label" for="email">Email:</label>
-        <input  type="email" name="email" id="email" placeholder="Ingresa Tu Email">
+        <input  type="email" name="email" id="email" placeholder="Ingresa Tu Email" value="<?php echo s($usuario->email); ?>">
     </div>
    
     <div class="campo">

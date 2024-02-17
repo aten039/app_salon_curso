@@ -30,5 +30,9 @@ $router->post('/recover_pass', [LoginControllers::class, 'recuperarPass']);
 $router->get('/recover', [LoginControllers::class, 'recuperar']);
 $router->post('/recover', [LoginControllers::class, 'recuperar']);
 
+//admin
+$router->get('/admin', [LoginControllers::class, 'admin']);
+//cita
+$router->get('/cita', [LoginControllers::class, 'cita']);
 
 $router->comprobarUrl();
