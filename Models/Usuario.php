@@ -91,6 +91,38 @@ class Usuario extends ActiveRecord{
         return self::$alertas;
     }
 
+    public function validarEmail(){
+        self::$alertas = [];
+        
+        if(!$this->email){
+            self::$alertas['error'][] = 'El email es obligatorio';
+        }
+        $valido = preg_match('/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/', $this->email);
+        
+        if($valido == 0){
+            self::$alertas['error'][]='El email es invalido';
+        }
+
+        return self::$alertas;
+
+    }
+
+    public function validarPassword(){
+        self::$alertas = [];
+
+        if(!$this->password){
+            self::$alertas['error'][]='El password es obligatorio';
+        }
+        if(strlen($this->password) < 8){
+            self::$alertas['error'][]='El password debe tener minimo 8 caracteres';
+        }
+        if($this->password != $this->passwordVerify){
+            self::$alertas['error'][]='El password no coincide';
+        }
+
+        return self::$alertas;
+    }
+
     public function verificarExistencia(){
 
         $email = ActiveRecord::$db->escape_string($this->email);

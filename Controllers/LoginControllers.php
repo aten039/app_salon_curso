@@ -65,19 +65,19 @@ class LoginControllers{
 
         $alertas=[];
 
-        if($_GET['token'] != ''){
-            $token = s($_GET['token']);
-        
-            $usuario = Usuario::where('token', $token);  
+        if(!$_GET['token']){
+            header('location: /');
         }
-
+        
+        $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
         if(empty($usuario)){
             Usuario::setAlerta('error', 'Su token no es valido');
         }else{
             
             Usuario::setAlerta('exito', 'Su cuenta ha sido confirmada');
             $usuario->confirmado = '1';
-            $usuario->token = null;
+            $usuario->token = '';
             $usuario->guardar();
         }
         
@@ -129,11 +129,78 @@ class LoginControllers{
     }
 
     public static function recuperarPass(Router $router){
-        $router->render('/auth/recover_pass', []);
+
+        $alertas = [];
+        $usuario = new Usuario();
+
+        
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $usuario = new Usuario($_POST);
+            
+            $alertas = $usuario->validarEmail();
+            
+            if(empty($alertas)){
+                $auth = Usuario::where('email', $usuario->email);
+                
+                if($auth && $auth->confirmado == '1'){
+                    $auth->generarToken();
+                    $auth->guardar();
+
+                    $email = new Email($auth->email, $auth->nombre, $auth->token);
+                    $email->enviarToken();
+
+                    Usuario::setAlerta('exito', 'Verifica tu email');
+                    
+                }else{
+                    Usuario::setAlerta('error', 'El usuario no existe o no esta confirmado');
+                    
+                    
+                }
+            }
+        }
+        $alertas= Usuario::getAlertas();
+
+        $router->render('/auth/recover_pass', [
+            'alertas'=>$alertas,
+            'usuario'=>$usuario
+        ]);
     }
     
-    public static function recuperar(){
-        echo 'Recuperar Pass nueva contrase;a';
+    public static function recuperar(Router $router){
+
+        if(!$_GET['token']){
+            header('location: /');
+        }
+
+        $alertas = [];
+        $token = s($_GET['token']);
+        
+        // buscar usuario por su token
+        $usuario = Usuario::where('token' , $token);
+
+        if(empty($usuario)){
+            header('location: /');
+        }
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
+            $usuario->sincronizar($_POST);
+
+            $alertas = $usuario->validarPassword();
+            
+            if(empty($alertas)){
+                $usuario->hashPass();
+                $usuario->token = '';
+                $usuario->guardar();
+
+                header('location: /');
+            }
+
+        }
+
+        $router->render('/auth/recover', [
+            'alertas'=>$alertas,
+            
+        ]);
     }
     
 }
