@@ -202,7 +202,7 @@ class Usuario extends ActiveRecord{
             $_SESSION['admin'] = $this->admin ?? null;
             header('location: /admin');
         }else{
-            header('location: /cita');
+            header('location: /citas');
         }
     }
 

@@ -2,6 +2,8 @@
 
 require_once __DIR__ . "/../includes/app.php";
 
+use Controllers\ApiControllers;
+use Controllers\CitaControllers;
 use Controllers\LoginControllers;
 use MVC\Router;
 
@@ -30,9 +32,18 @@ $router->post('/recover_pass', [LoginControllers::class, 'recuperarPass']);
 $router->get('/recover', [LoginControllers::class, 'recuperar']);
 $router->post('/recover', [LoginControllers::class, 'recuperar']);
 
+
+//area privada
+
+//citas
+$router->get('/citas', [CitaControllers::class, 'index']);
+
 //admin
 $router->get('/admin', [LoginControllers::class, 'admin']);
-//cita
-$router->get('/cita', [LoginControllers::class, 'cita']);
+
+
+//api de citas
+$router->get('/api/servicios', [ApiControllers::class, 'index']);
+
 
 $router->comprobarUrl();
