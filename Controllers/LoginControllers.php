@@ -125,7 +125,11 @@ class LoginControllers{
     }
 
     public static function logout(){
-        echo 'desde el logout';
+        session_start();
+        $_SESSION = [];
+        session_destroy();
+
+        header('location: /');
     }
 
     public static function recuperarPass(Router $router){

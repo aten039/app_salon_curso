@@ -44,6 +44,6 @@ $router->get('/admin', [LoginControllers::class, 'admin']);
 
 //api de citas
 $router->get('/api/servicios', [ApiControllers::class, 'index']);
-
+$router->post('/api/citas', [ApiControllers::class, 'guardar']);
 
 $router->comprobarUrl();
