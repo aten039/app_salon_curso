@@ -20,3 +20,13 @@ function isAuth():void{
         header('location: /');
     }
 }
+
+function isAdmin():void{
+
+
+    if(!isset($_SESSION['login']) || !isset($_SESSION['admin'])){
+        header('location: /');
+    }
+
+
+}

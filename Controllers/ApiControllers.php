@@ -5,6 +5,7 @@ namespace Controllers;
 use Models\Servicio;
 use Models\Cita;
 use Models\CitaServicio;
+use Models\Usuario;
 
 class ApiControllers{
 
@@ -35,9 +36,22 @@ class ApiControllers{
             $citaServicio->guardar();
 
         }
-      
     echo json_encode($resultado);
+    }
+    public static function eliminar(){
+        
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+
+            $cita = Cita::find($_POST['id']);
+
+            $cita->eliminar();
+
+            header('location:' . $_SERVER['HTTP_REFERER']);
+
+        }
+
 
 
     }
 }
+
