@@ -2,6 +2,7 @@ src/
 node_modules/
 vendor/
 **/.Ds_stores
+package.json
 package-lock.json
 gulpfile.js
 .env
