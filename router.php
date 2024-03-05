@@ -18,7 +18,7 @@ class Router{
 
     public function comprobarUrl(){
         
-        $urlActual = $_SERVER['PATH_INFO'] ?? $_SERVER['REQUEST_URI'] ?? "";
+        $urlActual = $_SERVER['REQUEST_URI'] === "" ? "/" : $_SERVER['REQUEST_URI'];
         $method = $_SERVER['REQUEST_METHOD'] ?? '';
 
         if(str_contains($urlActual, "?")){
