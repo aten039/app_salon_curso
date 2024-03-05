@@ -1,6 +1,7 @@
 
 /src
 /node_modules
+/vendor
 **/.Ds_stores
 package-lock.json
 gulpfile.js
